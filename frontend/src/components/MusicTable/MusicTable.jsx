@@ -28,12 +28,12 @@ const MusicTable = (props) => {
   }
 
   const deleteSong = async (key) => {
-    await axios.delete(`http://127.0.0.1:5000/api/songs/${key}`)
+    await axios.delete(`http://3.80.121.165:5000/api/songs/${key}`)
     setToggle(!toggle)
   }
 
   const calculateMinutes = (seconds) => {
-    return seconds/60
+    return seconds / 60
   }
 
   if (props.songs !== [])
@@ -69,16 +69,16 @@ const MusicTable = (props) => {
                 </tr>
               );
             })}
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><b>Total Time: {props.time}</b></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><b>Total Time: {props.time}</b></td>
+              <td></td>
+              <td></td>
+            </tr>
           </tbody>
         </table>
         {/* Proper location for modal display */}

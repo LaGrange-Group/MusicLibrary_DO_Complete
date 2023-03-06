@@ -16,7 +16,7 @@ const App = (props) => {
     if (filterValue === "") {
       getAllSongs();
     } else {
-     let filteredSongs = songs.filter(
+      let filteredSongs = songs.filter(
         (x) =>
           x.title.toLowerCase().includes(filterValue.toLowerCase()) ||
           x.artist.toLowerCase().includes(filterValue.toLowerCase()) ||
@@ -24,12 +24,12 @@ const App = (props) => {
           x.genre.toLowerCase().includes(filterValue.toLowerCase())
       );
       setSongs(filteredSongs);
-   }
+    }
   };
 
 
-  const getAllSongs = async() =>{
-    let response = await axios.get('http://127.0.0.1:5000/api/songs');
+  const getAllSongs = async () => {
+    let response = await axios.get('http://3.80.121.165:5000/api/songs');
     setSongs(response.data.songs);
     setTime(response.data.total_running_time);
   }
@@ -45,9 +45,9 @@ const App = (props) => {
     <div className="main">
       <h1> Music Library </h1>
       <SongForm getSongs={getSongs} newSong={newSong} />
-      <p/>
+      <p />
       <SearchBar filterSongs={filterSongs} />
-      <MusicTable toggle={toggle} songs={songs} getAllSongs={getAllSongs} filterSongs={filterSongs} time={time}/>
+      <MusicTable toggle={toggle} songs={songs} getAllSongs={getAllSongs} filterSongs={filterSongs} time={time} />
     </div>
   );
 };

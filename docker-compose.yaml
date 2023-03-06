@@ -2,9 +2,9 @@ version: '3.1'
 services:
   music-library-database:
     build: ./database
-    name: davidnlagrange/music-library-database:1
+    image: davidnlagrange/music-library-database:1
     ports:
-      - 3307:3306
+      - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
     restart: always
@@ -12,7 +12,7 @@ services:
       - db-data:/var/lib/mysql
   music-library-backend:
     build: ./backend
-    name: davidnlagrange/music-library-backend:1
+    image: davidnlagrange/music-library-backend:1
     ports:
       - 5000:5000
     restart: always
@@ -22,9 +22,9 @@ services:
       sh -c "flask db upgrade && flask run --host=0.0.0.0"
   music-library-frontend:
     build: ./frontend
-    name: davidnlagrange/music-library-frontend:1
+    image: davidnlagrange/music-library-frontend:1
     ports:
-      - 3001:80
+      - 80:80
     depends_on:
       - "music-library-backend"
 volumes:
